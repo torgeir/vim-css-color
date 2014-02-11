@@ -212,7 +212,8 @@ function! s:update_matches()
 	let group = ''
 	let groupstart = 0
 	let endcol = col('$')
-	call filter(b:color_match_id, 'matchdelete(v:val)')
+" @torgeir: is this needed? should it catch E803?
+"	call filter(b:color_match_id, 'matchdelete(v:val)')
 	for col in range( 1, endcol )
 		let nextgroup = col < endcol ? synIDattr( synID( lnr, col, 1 ), 'name' ) : ''
 		if group == nextgroup | continue | endif
